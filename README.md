@@ -145,7 +145,11 @@ Listen 8001
    $ chmod 0777 files
    ```
 
+   > https://www.drupal.org/docs/7/installing-drupal-7/step-3-create-settingsphp-and-the-files-directory
+
 2. Install Drupal in web browser on address: http://<your-web-address or ip>:8001
+
+   > https://www.drupal.org/docs/7/installing-drupal-7/step-4-run-the-installation-script
 
 3. Follow the steps on page to install and setup your site.
 
