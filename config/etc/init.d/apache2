@@ -17,6 +17,10 @@ DESC="web server"
 NAME=apache2
 DAEMON=/usr/sbin/$NAME
 
+# Set config dir
+DIR_SUFFIX=
+APACHE_CONFDIR=/web/config/etc/apache2
+
 SCRIPTNAME="${0##*/}"
 SCRIPTNAME="${SCRIPTNAME##[KS][0-9][0-9]}"
 if [ -n "$APACHE_CONFDIR" ] ; then
@@ -32,6 +36,7 @@ else
 	DIR_SUFFIX=
 	APACHE_CONFDIR=/etc/apache2
 fi
+
 if [ -z "$APACHE_ENVVARS" ] ; then
 	APACHE_ENVVARS=$APACHE_CONFDIR/envvars
 fi
@@ -55,7 +60,9 @@ HTCACHECLEAN_PATH=/var/cache/apache2$DIR_SUFFIX/mod_cache_disk
 HTCACHECLEAN_OPTIONS=""
 
 # Read configuration variable file if it is present
-if [ -f /etc/default/apache2$DIR_SUFFIX ] ; then
+if [ -f /web/config/etc/default/apache2 ] ; then
+	. /web/config/etc/default/apache2
+elif [ -f /etc/default/apache2$DIR_SUFFIX ] ; then
 	. /etc/default/apache2$DIR_SUFFIX
 elif [ -f /etc/default/apache2 ] ; then
 	. /etc/default/apache2
